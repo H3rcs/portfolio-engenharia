@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hércules Santos | Engenheiro & Data Lead</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'], display: ['Outfit', 'sans-serif'], poppins: ['Poppins', 'sans-serif'] },
+                    colors: { 'cyano-neon': '#00f3ff', 'azul-galactico': '#2563eb', 'violeta-cosmico': '#7c3aed', 'branco-holografico': '#f8fafc', 'preto-espacial': '#020617' },
+                    animation: { 'spin-slow': 'spin 12s linear infinite' }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root { --mouse-x: 50%; --mouse-y: 50%; }
+        body { background-color: #020617; color: #f8fafc; font-family: 'Inter', sans-serif; min-height: 100vh; overflow-x: hidden; transition: background-color 1.2s ease, color 1.2s ease; }
+
+        /* --- BACKGROUNDS (IDÊNTICO AO REFERÊNCIA) --- */
+        .bg-space { background-color: #020617; position: fixed; inset: 0; z-index: -2; overflow: hidden; }
+        .nebula-element { position: absolute; border-radius: 50%; filter: blur(150px); animation: nebula-drift 30s infinite alternate ease-in-out; opacity: 0.6; }
+        #nebula-1 { width: 900px; height: 900px; top: -20%; left: -15%; background: rgba(59, 130, 246, 0.3); }
+        #nebula-2 { width: 800px; height: 800px; bottom: -25%; right: -10%; background: rgba(168, 85, 247, 0.25); animation-delay: -12s; }
+        .stars-container { position: absolute; inset: 0; background-image: radial-gradient(2px 2px at 20px 30px, rgba(255, 255, 255, 0.7), transparent), radial-gradient(2px 2px at 80px 70px, rgba(255, 255, 255, 0.7), transparent), radial-gradient(2px 2px at 120px 40px, rgba(255, 255, 255, 0.7), transparent), radial-gradient(2px 2px at 400px 50px, rgba(255, 255, 255, 0.7), transparent); background-size: 400px 400px; animation: stars-pan 120s linear infinite; }
+        @keyframes stars-pan { from { background-position: 0 0; } to { background-position: 100% 100%; } }
+        @keyframes nebula-drift { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(20%, -10%) scale(1.1); } }
+
+        /* LIGHT MODE BACKGROUNDS */
+        #light-bg { background-color: #f1f5f9; position: fixed; inset: 0; z-index: -2; overflow: hidden; opacity: 1; transition: opacity 1.2s ease; }
+        #light-bg::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(56, 189, 248, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.08) 1px, transparent 1px); background-size: 40px 40px; z-index: -1; }
+        .vibrant-blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.6; mix-blend-mode: multiply; animation: blob-float 20s infinite alternate cubic-bezier(0.4, 0, 0.2, 1); }
+        #blob-cyan { top: -10%; left: -10%; width: 70vw; height: 70vw; background: radial-gradient(circle, #22d3ee, transparent 70%); animation-duration: 25s; }
+        #blob-purple { bottom: -10%; right: -10%; width: 80vw; height: 80vw; background: radial-gradient(circle, #a78bfa, transparent 70%); animation-duration: 28s; animation-direction: alternate-reverse; }
+        @keyframes blob-float { 0% { transform: translate(0, 0) scale(1); } 100% { transform: translate(5%, 10%) scale(1.1); } }
+
+        /* HOLO CARDS */
+        .holo-card { 
+            position: relative; 
+            border-radius: 1rem; 
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); 
+            background-clip: padding-box; 
+            z-index: 1; 
+            --card-glow: rgba(255, 255, 255, 0.1);
+        }
+
+        html.dark .holo-card { 
+            background: rgba(15, 23, 42, 0.7); 
+            border: 1px solid rgba(255,255,255,0.05); 
+            backdrop-filter: blur(25px); 
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.5); 
+        }
+        
+        html.dark .holo-card:hover { 
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 15px 40px -10px var(--card-glow), inset 0 0 20px rgba(255,255,255,0.02);
+            border-color: var(--card-glow); 
+        }
+
+        html:not(.dark) .holo-card { 
+            background: rgba(255, 255, 255, 0.85); 
+            border: 1px solid white; 
+            box-shadow: 0 10px 25px -5px rgba(148, 163, 184, 0.1); 
+        }
+        html:not(.dark) .holo-card:hover { 
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+            border-color: #3b82f6;
+        }
+
+        /* TEXTOS ADAPTATIVOS */
+        .text-adaptive { color: #f8fafc; }
+        html:not(.dark) .text-adaptive { color: #0f172a; }
+        
+        .text-sub { color: #94a3b8; }
+        html:not(.dark) .text-sub { color: #475569; }
+
+        /* NAV */
+        .sticky-nav { position: sticky; top: 90px; z-index: 40; display: flex; justify-content: center; margin-bottom: 2rem; }
+        .nav-capsule { padding: 5px; border-radius: 99px; display: inline-flex; backdrop-filter: blur(10px); background: rgba(15,23,42,0.8); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        html:not(.dark) .nav-capsule { background: rgba(255,255,255,0.9); border-color: #cbd5e1; }
+        .nav-btn { padding: 8px 20px; border-radius: 99px; font-weight: 600; font-size: 0.85rem; color: #94a3b8; text-decoration: none; transition: all 0.3s; }
+        .nav-btn:hover { color: #fff; background: rgba(255,255,255,0.1); }
+        html:not(.dark) .nav-btn:hover { color: #2563eb; background: #f1f5f9; }
+
+        /* TIMELINE */
+        .timeline-line { position: absolute; left: 0; top: 10px; bottom: 0; width: 2px; background: linear-gradient(to bottom, #00f3ff, #2563eb, transparent); }
+        .timeline-dot { position: absolute; left: -5px; top: 24px; width: 12px; height: 12px; border-radius: 50%; background: #00f3ff; box-shadow: 0 0 10px #00f3ff; }
+
+        /* FOTO PROFILE */
+        .profile-container { position: relative; width: 180px; height: 180px; margin: 0 auto; }
+        .profile-img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border: 4px solid rgba(255,255,255,0.1); z-index: 10; position: relative; }
+        html:not(.dark) .profile-img { border-color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        
+        /* HEADER */
+        header { background: rgba(2, 6, 23, 0.8); border-bottom: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px); }
+        html:not(.dark) header { background: rgba(255, 255, 255, 0.8); border-color: rgba(0,0,0,0.05); }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <div id="dark-bg" class="bg-space"><div class="nebula-element" id="nebula-1"></div><div class="nebula-element" id="nebula-2"></div><div class="stars-container"></div></div>
+    <div id="light-bg" class="hidden"><div class="vibrant-blob" id="blob-cyan"></div><div class="vibrant-blob" id="blob-purple"></div></div>
+
+    <header class="h-20 flex items-center justify-between px-6 lg:px-12 fixed top-0 w-full z-50">
+        <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full overflow-hidden border border-white/20">
+                <img src="WhatsApp Image 2025-09-25 at 15.53.07 (2).jpeg" class="w-full h-full object-cover" onerror="this.style.display='none'">
+            </div>
+            <div>
+                <h1 class="font-display font-bold text-lg text-adaptive leading-none">Hércules Santos</h1>
+                <p class="text-[10px] font-bold tracking-widest text-cyan-500 uppercase mt-1">Engenharia & Dados</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <button onclick="toggleTheme()" class="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-400 hover:text-yellow-400 transition-colors">
+                <i id="theme-icon" class="fas fa-moon"></i>
+            </button>
+            <a href="#" onclick="window.print()" class="hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-bold bg-cyan-500/10 text-cyan-500 border border-cyan-500/20 hover:bg-cyan-500 hover:text-white transition-all">
+                <i class="fas fa-download"></i> PDF
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-4xl w-full mx-auto p-6 lg:p-8 pb-32 relative z-10" style="padding-top: 120px;">
+
+        <section class="text-center mb-16">
+            <div class="mb-6 profile-container">
+                <img src="WhatsApp Image 2025-09-25 at 15.53.07 (2).jpeg" alt="Hércules Santos" class="profile-img shadow-2xl">
+            </div>
+
+            <h2 class="text-3xl md:text-4xl font-black font-display mb-4 text-adaptive leading-tight">
+                Hércules Santos <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600">da Silva Lima</span>
+            </h2>
+            <p class="max-w-2xl mx-auto text-lg text-sub font-medium mb-8">
+                Engenheiro Eletricista | Supervisor de Processos | Especialista em Dados
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-sm">
+                <div class="holo-card p-4 flex flex-col items-center hover:border-cyan-500/50">
+                    <i class="fas fa-map-marker-alt text-cyan-400 mb-2 text-lg"></i>
+                    <span class="font-bold text-adaptive">Feira de Santana, BA</span>
+                    <span class="text-[10px] text-sub">Av. José Raimundo Aras</span>
+                </div>
+                <div class="holo-card p-4 flex flex-col items-center hover:border-blue-500/50">
+                    <i class="fas fa-envelope text-blue-500 mb-2 text-lg"></i>
+                    <span class="font-bold text-adaptive">Email</span>
+                    <span class="text-[10px] text-sub truncate w-full text-center">herculessantos.comercial@gmail.com</span>
+                </div>
+                <div class="holo-card p-4 flex flex-col items-center hover:border-emerald-500/50">
+                    <i class="fas fa-phone text-emerald-500 mb-2 text-lg"></i>
+                    <span class="font-bold text-adaptive">(75) 99101-9893</span>
+                    <span class="text-[10px] text-sub">WhatsApp</span>
+                </div>
+                <div class="holo-card p-4 flex flex-col items-center hover:border-purple-500/50">
+                    <i class="fas fa-id-card text-purple-500 mb-2 text-lg"></i>
+                    <span class="font-bold text-adaptive">CNH A e B</span>
+                    <span class="text-[10px] text-sub">Disponibilidade Total</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="sticky-nav">
+            <nav class="nav-capsule">
+                <a href="#experiencia" class="nav-btn">Carreira</a>
+                <a href="#formacao" class="nav-btn">Formação</a>
+                <a href="#skills" class="nav-btn">Skills</a>
+                <a href="#projetos" class="nav-btn">Portfólio</a>
+            </nav>
+        </div>
+
+        <div id="experiencia" class="scroll-mt-32 mb-20">
+            <h3 class="text-2xl font-bold font-display text-adaptive mb-8 flex items-center gap-3">
+                <i class="fas fa-briefcase text-cyan-500"></i> Trajetória Profissional
+            </h3>
+
+            <div class="relative pl-6 space-y-10">
+                <div class="timeline-line"></div>
+
+                <div class="holo-card p-6 ml-4" style="--card-glow: #06b6d4;">
+                    <div class="timeline-dot animate-pulse"></div>
+                    <div class="flex flex-col md:flex-row justify-between mb-4 border-b border-white/5 pb-3">
+                        <div>
+                            <h4 class="text-xl font-bold text-cyan-500">Supervisor de Processamento de Dados</h4>
+                            <p class="font-bold text-adaptive opacity-90">GLUX - Soluções em Engenharia</p>
+                        </div>
+                        <span class="text-xs font-mono font-bold bg-cyan-500/10 text-cyan-600 px-3 py-1 rounded self-start mt-2 md:mt-0 border border-cyan-500/20">ABR 2025 — ATUAL</span>
+                    </div>
+                    <ul class="text-sm space-y-2 text-sub list-disc pl-5">
+                        <li>Liderança estratégica de times multidisciplinares e integridade de dados.</li>
+                        <li>Gestão de KPIs de eficiência operacional e qualidade.</li>
+                        <li>Interface entre engenharia e BI, otimizando fluxos técnicos.</li>
+                    </ul>
+                </div>
+
+                <div class="holo-card p-6 ml-4" style="--card-glow: #3b82f6;">
+                    <div class="timeline-dot bg-blue-500"></div>
+                    <div class="flex flex-col md:flex-row justify-between mb-4 border-b border-white/5 pb-3">
+                        <div>
+                            <h4 class="text-lg font-bold text-adaptive">Supervisor de Processamento de Dados</h4>
+                            <p class="font-bold text-sub">Grupo JVM</p>
+                        </div>
+                        <span class="text-xs font-mono text-sub opacity-70 px-3 py-1 bg-white/5 rounded self-start">MAI 2023 — ABR 2025</span>
+                    </div>
+                    <ul class="text-sm space-y-2 text-sub list-disc pl-5">
+                        <li>Supervisionei operações de processamento de dados, promovendo a padronização e análise crítica.</li>
+                        <li>Atuação ativa na CIPA, reforçando a cultura de segurança e compliance.</li>
+                    </ul>
+                    <div class="mt-4 pt-3 border-t border-white/5">
+                        <div class="flex justify-between items-center text-xs">
+                            <span class="font-bold text-adaptive">Codificador de Dados</span>
+                            <span class="font-mono text-sub">FEV 2022 — ABR 2023</span>
+                        </div>
+                        <p class="text-xs text-sub mt-1">Codificação e estruturação de dados para etapas subsequentes de análise e engenharia.</p>
+                    </div>
+                </div>
+
+                <div class="holo-card p-6 ml-4" style="--card-glow: #a855f7;">
+                    <div class="timeline-dot bg-purple-500"></div>
+                    <div class="flex flex-col md:flex-row justify-between mb-4 border-b border-white/5 pb-3">
+                        <div>
+                            <h4 class="text-lg font-bold text-adaptive">Auxiliar de Produção</h4>
+                            <p class="font-bold text-sub">Labovet Produtos Veterinários</p>
+                        </div>
+                        <span class="text-xs font-mono text-sub opacity-70 px-3 py-1 bg-white/5 rounded self-start">FEV 2019 — NOV 2021</span>
+                    </div>
+                    <p class="text-sm text-sub mb-4">Executei manutenção corretiva e preventiva em sistemas industriais, assegurando a disponibilidade de máquinas e equipamentos críticos.</p>
+                    
+                    <div class="mt-4 pt-3 border-t border-white/5">
+                        <div class="flex flex-col md:flex-row justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <span class="font-bold text-adaptive text-sm">Técnico Eletromecânico</span>
+                            </div>
+                            <span class="font-mono text-xs text-sub opacity-70">JAN 2018 — JAN 2019</span>
+                        </div>
+                        <p class="text-xs text-sub">Atuação na linha de produção com foco em processos operacionais e normas de qualidade.</p>
+                    </div>
+                </div>
+
+                <div class="holo-card p-6 ml-4" style="--card-glow: #f59e0b;">
+                    <div class="timeline-dot bg-amber-500"></div>
+                    <div class="flex flex-col md:flex-row justify-between mb-2">
+                        <div>
+                            <h4 class="text-lg font-bold text-adaptive">Técnico Eletromecânico</h4>
+                            <p class="font-bold text-sub">Belgo Arames</p>
+                        </div>
+                        <span class="text-xs font-mono text-sub opacity-70 px-3 py-1 bg-white/5 rounded self-start">JUN 2017 — DEZ 2017</span>
+                    </div>
+                    <p class="text-sm text-sub">Suporte técnico em manutenção eletromecânica em ambiente industrial de grande porte.</p>
+                </div>
+
+                <div class="holo-card p-6 ml-4" style="--card-glow: #64748b;">
+                    <div class="timeline-dot bg-slate-500"></div>
+                    <div class="flex flex-col md:flex-row justify-between mb-2">
+                        <div>
+                            <h4 class="text-lg font-bold text-adaptive">Auxiliar de Escritório</h4>
+                            <p class="font-bold text-sub">São Luiz Transportes</p>
+                        </div>
+                        <span class="text-xs font-mono text-sub opacity-70 px-3 py-1 bg-white/5 rounded self-start">AGO 2014 — AGO 2016</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="formacao" class="scroll-mt-32 mb-20">
+            <h3 class="text-2xl font-bold font-display text-adaptive mb-8 flex items-center gap-3">
+                <i class="fas fa-graduation-cap text-emerald-500"></i> Formação Acadêmica
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="holo-card p-6 border-l-4 border-emerald-500" style="--card-glow: #10b981;">
+                    <h4 class="font-bold text-adaptive text-lg">Engenharia Elétrica</h4>
+                    <p class="text-sm text-sub mt-1">UNEF - Feira de Santana</p>
+                    <div class="mt-4 inline-block bg-emerald-500/10 text-emerald-600 text-xs font-bold px-2 py-1 rounded border border-emerald-500/20">BACHARELADO (2025)</div>
+                </div>
+                <div class="holo-card p-6 border-l-4 border-red-500" style="--card-glow: #ef4444;">
+                    <h4 class="font-bold text-adaptive text-lg">Eletromecânica</h4>
+                    <p class="text-sm text-sub mt-1">SENAI BAHIA</p>
+                    <div class="mt-4 inline-block bg-red-500/10 text-red-600 text-xs font-bold px-2 py-1 rounded border border-red-500/20">TÉCNICO (2017)</div>
+                </div>
+                <div class="holo-card p-6 border-l-4 border-amber-500" style="--card-glow: #f59e0b;">
+                    <h4 class="font-bold text-adaptive text-lg">Certificações</h4>
+                    <ul class="text-xs text-sub mt-2 space-y-1">
+                        <li>• Sistemas Embarcados (CEPEDI)</li>
+                        <li>• Compliance (CEMIG)</li>
+                        <li>• CIPA & Brigada</li>
+                         <li>• Informática (Cedaspy)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="skills" class="scroll-mt-32 mb-20">
+            <h3 class="text-2xl font-bold font-display text-adaptive mb-8 flex items-center gap-3">
+                <i class="fas fa-bolt text-purple-500"></i> Competências
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="holo-card p-6 border-t-2 border-purple-500" style="--card-glow: #a855f7;">
+                    <h4 class="font-bold text-lg mb-4 text-purple-500 uppercase">Gestão & Técnica</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-purple-500/10 text-purple-600 rounded text-xs font-bold border border-purple-500/20">Liderança</span>
+                        <span class="px-3 py-1 bg-purple-500/10 text-purple-600 rounded text-xs font-bold border border-purple-500/20">Automação Ind.</span>
+                        <span class="px-3 py-1 bg-purple-500/10 text-purple-600 rounded text-xs font-bold border border-purple-500/20">KPIs</span>
+                        <span class="px-3 py-1 bg-purple-500/10 text-purple-600 rounded text-xs font-bold border border-purple-500/20">Manutenção</span>
+                    </div>
+                </div>
+                <div class="holo-card p-6 border-t-2 border-cyan-500" style="--card-glow: #06b6d4;">
+                    <h4 class="font-bold text-lg mb-4 text-cyan-500 uppercase">Dados & Software</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-cyan-500/10 text-cyan-600 rounded text-xs font-bold border border-cyan-500/20">Python</span>
+                        <span class="px-3 py-1 bg-cyan-500/10 text-cyan-600 rounded text-xs font-bold border border-cyan-500/20">Power BI</span>
+                        <span class="px-3 py-1 bg-cyan-500/10 text-cyan-600 rounded text-xs font-bold border border-cyan-500/20">Excel Adv.</span>
+                        <span class="px-3 py-1 bg-cyan-500/10 text-cyan-600 rounded text-xs font-bold border border-cyan-500/20">HTML/JS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="projetos" class="scroll-mt-32">
+            <h3 class="text-2xl font-bold font-display text-adaptive mb-8 flex items-center gap-3">
+                <i class="fas fa-laptop-code text-blue-500"></i> Projetos & Portfólio
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="holo-card p-6 border-l-4 border-blue-500" style="--card-glow: #3b82f6;">
+                    <h4 class="text-lg font-bold text-adaptive mb-2 flex items-center gap-2">
+                        <i class="fas fa-chart-line"></i> Dashboard Operacional
+                    </h4>
+                    <p class="text-xs font-bold text-sub mb-3 opacity-80">Tech: HTML, JS, Integração de Dados</p>
+                    <p class="text-sm text-sub mb-3">Monitoramento em tempo real para operações de fiscalização. Visualização de KPIs, metas e detecção de pendências.</p>
+                </div>
+                <div class="holo-card p-6 border-l-4 border-yellow-500" style="--card-glow: #eab308;">
+                    <h4 class="text-lg font-bold text-adaptive mb-2 flex items-center gap-2">
+                        <i class="fas fa-robot"></i> Bot de Trading
+                    </h4>
+                    <p class="text-xs font-bold text-sub mb-3 opacity-80">Tech: Python, API Binance</p>
+                    <p class="text-sm text-sub mb-3">Robô autônomo para execução de ordens de compra e venda baseadas em lógica algorítmica.</p>
+                </div>
+                <div class="holo-card p-6 border-l-4 border-green-500" style="--card-glow: #10b981;">
+                    <h4 class="text-lg font-bold text-adaptive mb-2 flex items-center gap-2">
+                        <i class="fas fa-file-alt"></i> Gerador de Documentos
+                    </h4>
+                    <p class="text-xs font-bold text-sub mb-3 opacity-80">Tech: Python, GUI</p>
+                    <p class="text-sm text-sub mb-3">Automação desktop para geração de cartas formais e relatórios a partir de templates.</p>
+                </div>
+                <div class="holo-card p-6 border-l-4 border-purple-500" style="--card-glow: #a855f7;">
+                    <h4 class="text-lg font-bold text-adaptive mb-2 flex items-center gap-2">
+                        <i class="fas fa-server"></i> Gestão Integrada Web
+                    </h4>
+                    <p class="text-xs font-bold text-sub mb-3 opacity-80">Tech: Render, Backend, Login</p>
+                    <p class="text-sm text-sub mb-3">Plataforma web completa hospedada na nuvem com sistema de login seguro.</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-center py-10 text-xs font-bold text-sub opacity-50 relative z-10 uppercase tracking-widest">
+        <p>&copy; 2026 Hércules Santos.</p>
+    </footer>
+
+    <script>
+        // Alternar Tema
+        function toggleTheme() {
+            const html = document.documentElement;
+            const isDark = html.classList.toggle('dark');
+            const icon = document.getElementById('theme-icon');
+            const darkBg = document.getElementById('dark-bg');
+            const lightBg = document.getElementById('light-bg');
+            
+            if (!isDark) {
+                icon.className = 'fas fa-sun text-amber-500';
+                darkBg.classList.add('hidden');
+                lightBg.classList.remove('hidden');
+            } else {
+                icon.className = 'fas fa-moon';
+                darkBg.classList.remove('hidden');
+                lightBg.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
