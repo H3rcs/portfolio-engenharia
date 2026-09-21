@@ -10,13 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#EEF1F2;
-    --sheet:#F8FAFA;
-    --ink:#16222C;
-    --muted:#5B6B77;
-    --grid:#D6DEE2;
-    --line:#0B7A99;   /* CAD layer: cyan */
-    --phase:#C8323F;  /* CAD layer: red, used once per view */
+    --paper:#EEF1F2; --sheet:#F8FAFA; --ink:#16222C; --muted:#5B6B77;
+    --grid:#D6DEE2; --line:#0B7A99; --phase:#C8323F;
     --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
     --body:"Barlow","Segoe UI",Arial,sans-serif;
   }
@@ -25,77 +20,49 @@
   body{
     font-family:var(--body);font-size:17px;line-height:1.55;color:var(--ink);
     background-color:var(--paper);
-    background-image:
-      linear-gradient(var(--grid) 1px,transparent 1px),
-      linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
     background-size:32px 32px;
     padding-bottom:env(safe-area-inset-bottom,0px);
   }
   img{max-width:100%;display:block}
   a{color:var(--line)}
   a:focus-visible,button:focus-visible{outline:3px solid var(--line);outline-offset:3px}
-
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
-  /* ---------- header ---------- */
-  .top{
-    position:sticky;top:0;z-index:20;
-    background:rgba(238,241,242,.94);backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--ink);
-    padding-top:env(safe-area-inset-top,0px);
-  }
+  /* header */
+  .top{position:sticky;top:0;z-index:20;background:rgba(238,241,242,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--ink);padding-top:env(safe-area-inset-top,0px)}
   .top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-  .brand{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--ink);text-decoration:none;letter-spacing:.01em}
-  .top nav{display:flex;gap:22px;align-items:center}
+  .brand{font-family:var(--display);font-weight:700;font-size:1.3rem;color:var(--ink);text-decoration:none}
+  .top nav{display:flex;gap:20px;align-items:center}
   .top nav a{color:var(--ink);text-decoration:none;font-weight:500;font-size:.95rem}
   .top nav a:hover{color:var(--line)}
   .top nav .cta{background:var(--ink);color:var(--sheet);padding:8px 14px}
   .top nav .cta:hover{background:var(--phase);color:#fff}
-  @media (max-width:720px){.top nav a:not(.cta){display:none}}
+  .lang{display:flex;border:1.5px solid var(--ink)}
+  .lang button{font:600 .85rem var(--body);background:transparent;border:0;padding:6px 9px;cursor:pointer;color:var(--ink)}
+  .lang button[aria-pressed="true"]{background:var(--ink);color:var(--sheet)}
+  @media (max-width:800px){.top nav a:not(.cta){display:none}}
 
-  /* ---------- hero ---------- */
+  /* hero */
   .hero{padding:72px 0 0}
   .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:center}
-  .hero h1{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(2.6rem,6vw,4.6rem);line-height:.98;letter-spacing:-.01em;
-    max-width:14ch;
-  }
-  .hero .lede{margin-top:22px;font-size:1.15rem;color:var(--muted);max-width:46ch}
+  .hero h1{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,6vw,4.6rem);line-height:.98;letter-spacing:-.01em;max-width:15ch}
+  .hero .lede{margin-top:22px;font-size:1.15rem;color:var(--muted);max-width:48ch}
   .actions{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px}
-  .btn{
-    display:inline-block;font-family:var(--display);font-weight:600;font-size:1.1rem;
-    padding:12px 22px;text-decoration:none;border:1.5px solid var(--ink);
-  }
+  .btn{display:inline-block;font-family:var(--display);font-weight:600;font-size:1.1rem;padding:12px 22px;text-decoration:none;border:1.5px solid var(--ink)}
   .btn.primary{background:var(--phase);border-color:var(--phase);color:#fff}
   .btn.primary:hover{background:var(--ink);border-color:var(--ink)}
-  .btn.ghost{color:var(--ink);background:transparent}
+  .btn.ghost{color:var(--ink)}
   .btn.ghost:hover{background:var(--ink);color:var(--sheet)}
-
-  /* detail callout with the photo */
   .callout{position:relative;justify-self:center;width:min(300px,78vw)}
-  .callout .ring{
-    width:100%;aspect-ratio:1;border-radius:50%;
-    border:1.5px solid var(--line);padding:10px;background:var(--paper);
-  }
+  .callout .ring{width:100%;aspect-ratio:1;border-radius:50%;border:1.5px solid var(--line);padding:10px;background:var(--paper)}
   .callout img{width:100%;height:100%;object-fit:cover;border-radius:50%;background:var(--grid)}
-  .callout .tag{
-    position:absolute;right:-6px;bottom:6px;
-    display:flex;align-items:center;gap:8px;
-    font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--line);
-  }
+  .callout .tag{position:absolute;right:-6px;bottom:6px;display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:600;font-size:.95rem;color:var(--line)}
   .callout .tag::before{content:"";width:40px;height:1.5px;background:var(--line)}
-  .callout .tag b{
-    display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;
-    border:1.5px solid var(--line);font-weight:700;
-  }
+  .callout .tag b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);font-weight:700}
 
-  /* title block: the signature element */
-  .titleblock{
-    margin-top:64px;background:var(--sheet);
-    display:grid;grid-template-columns:1.4fr 1.2fr 1fr 1.4fr .6fr;
-    border:2px solid var(--ink);
-  }
+  /* title block */
+  .titleblock{margin-top:64px;background:var(--sheet);display:grid;grid-template-columns:1.4fr 1.2fr 1.1fr 1.4fr .6fr;border:2px solid var(--ink)}
   .titleblock div{padding:12px 16px;border-right:1px solid var(--ink)}
   .titleblock div:last-child{border-right:0}
   .titleblock dt{font-size:.78rem;color:var(--muted)}
@@ -113,22 +80,15 @@
     @keyframes plot{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
   }
 
-  /* ---------- sections ---------- */
+  /* sections */
   section.block{padding:96px 0 0}
-  .block h2{
-    font-family:var(--display);font-weight:700;font-size:clamp(2rem,4vw,2.8rem);line-height:1.05;
-    padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:8px;
-    display:flex;justify-content:space-between;align-items:baseline;gap:16px;
-  }
+  .block h2{font-family:var(--display);font-weight:700;font-size:clamp(2rem,4vw,2.8rem);line-height:1.05;padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:8px;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
   .block h2 small{font-family:var(--body);font-weight:500;font-size:.95rem;color:var(--muted)}
   .intro{color:var(--muted);max-width:62ch;margin:18px 0 8px}
 
-  /* services as a drawing legend */
+  /* services legend */
   .legend{width:100%;border-collapse:collapse;background:var(--sheet);margin-top:20px;border:1px solid var(--ink)}
-  .legend th{
-    text-align:left;font-weight:500;font-size:.85rem;color:var(--muted);
-    padding:10px 16px;border-bottom:1px solid var(--ink);
-  }
+  .legend th{text-align:left;font-weight:500;font-size:.85rem;color:var(--muted);padding:10px 16px;border-bottom:1px solid var(--ink)}
   .legend td{padding:18px 16px;border-bottom:1px solid var(--grid);vertical-align:top}
   .legend tr:last-child td{border-bottom:0}
   .legend .sym{width:76px}
@@ -146,21 +106,17 @@
   }
 
   /* projects */
-  .project{
-    display:grid;grid-template-columns:1.1fr 1fr;gap:36px;
-    padding:40px 0;border-bottom:1px solid var(--ink);
-  }
+  .project{display:grid;grid-template-columns:1.25fr 1fr;gap:36px;padding:40px 0;border-bottom:1px solid var(--ink)}
   .project:last-child{border-bottom:0}
-  .sheet{
-    background:var(--sheet);border:1px solid var(--ink);aspect-ratio:1.414;
-    position:relative;overflow:hidden;
-  }
-  .sheet img{width:100%;height:100%;object-fit:contain;background:#fff}
-  .sheet .placeholder{position:absolute;inset:0;display:grid;place-items:center}
-  .sheet .placeholder svg{width:80%;height:80%;stroke:var(--grid);fill:none;stroke-width:2}
-  .sheet img + .placeholder{display:none}
-  .sheet.empty img{display:none}
-  .sheet.empty img + .placeholder{display:grid}
+  .project.textonly{grid-template-columns:1fr}
+  .project.textonly > div{max-width:720px}
+  .gallery .main{display:block;background:#fff;border:1px solid var(--ink);aspect-ratio:1.414;overflow:hidden}
+  .gallery .main img{width:100%;height:100%;object-fit:contain}
+  .gallery .open{display:inline-block;margin-top:8px;font-size:.9rem}
+  .thumbs{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .thumbs button{font:500 .88rem var(--body);color:var(--ink);background:var(--sheet);border:1px solid var(--grid);padding:6px 10px;cursor:pointer}
+  .thumbs button:hover{border-color:var(--ink)}
+  .thumbs button[aria-current="true"]{border-color:var(--line);color:var(--line);box-shadow:inset 0 -2px 0 var(--line)}
   .project h3{font-family:var(--display);font-weight:700;font-size:1.7rem;line-height:1.1}
   .project .where{color:var(--muted);margin-top:4px}
   .project p{margin-top:14px;max-width:52ch}
@@ -172,12 +128,21 @@
   .scope li{margin-top:4px}
   @media (max-width:820px){.project{grid-template-columns:1fr;gap:22px}}
 
-  /* experience timeline */
+  /* software */
+  .apps{display:grid;grid-template-columns:1.2fr 1fr;gap:0;margin-top:24px;border:1px solid var(--ink);background:var(--sheet)}
+  .apps article{padding:26px}
+  .apps article + article{border-left:1px solid var(--ink)}
+  .apps h3{font-family:var(--display);font-weight:700;font-size:1.6rem;line-height:1.1}
+  .apps .kind{color:var(--line);font-weight:500}
+  .apps p{margin-top:10px;color:var(--muted);max-width:52ch}
+  .apps .stack{margin-top:12px;font-size:.92rem}
+  .apps .stack strong{font-weight:600}
+  .apps a.btn{margin-top:18px}
+  @media (max-width:760px){.apps{grid-template-columns:1fr}.apps article + article{border-left:0;border-top:1px solid var(--ink)}}
+
+  /* experience */
   .timeline{list-style:none;margin-top:20px}
-  .timeline li{
-    display:grid;grid-template-columns:190px 1fr;gap:24px;
-    padding:20px 0;border-bottom:1px solid var(--grid);
-  }
+  .timeline li{display:grid;grid-template-columns:190px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--grid)}
   .timeline li:last-child{border-bottom:0}
   .timeline .when{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--muted)}
   .timeline h3{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.2}
@@ -186,32 +151,24 @@
   @media (max-width:640px){.timeline li{grid-template-columns:1fr;gap:4px}}
 
   /* credentials */
-  .creds{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:24px;border:1px solid var(--ink);background:var(--sheet)}
+  .creds{display:grid;grid-template-columns:repeat(3,1fr);margin-top:24px;border:1px solid var(--ink);background:var(--sheet)}
   .creds div{padding:22px;border-right:1px solid var(--ink)}
   .creds div:last-child{border-right:0}
   .creds h3{font-family:var(--display);font-weight:600;font-size:1.3rem;line-height:1.2}
   .creds p{color:var(--muted);margin-top:6px}
   .tools{margin-top:22px;color:var(--muted)}
-  .tools strong{color:var(--ink);font-weight:600}
-  @media (max-width:760px){
-    .creds{grid-template-columns:1fr}
-    .creds div{border-right:0;border-bottom:1px solid var(--ink)}
-    .creds div:last-child{border-bottom:0}
-  }
+  @media (max-width:760px){.creds{grid-template-columns:1fr}.creds div{border-right:0;border-bottom:1px solid var(--ink)}.creds div:last-child{border-bottom:0}}
 
   /* contact */
-  .contact{
-    margin:96px 0 0;background:var(--ink);color:var(--sheet);
-  }
+  .contact{margin:96px 0 0;background:var(--ink);color:var(--sheet)}
   .contact .wrap{padding-top:64px;padding-bottom:64px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end}
   .contact h2{font-family:var(--display);font-weight:700;font-size:clamp(2.2rem,5vw,3.4rem);line-height:1}
   .contact p{color:#AEBBC4;margin-top:14px;max-width:48ch}
   .contact ul{list-style:none;display:grid;gap:12px}
-  .contact a{color:var(--sheet);font-family:var(--display);font-weight:600;font-size:1.25rem;text-decoration:none;border-bottom:1.5px solid #3C4C58;padding-bottom:6px;display:block}
+  .contact a{color:var(--sheet);font-family:var(--display);font-weight:600;font-size:1.25rem;text-decoration:none;border-bottom:1.5px solid #3C4C58;padding-bottom:6px;display:block;overflow-wrap:anywhere}
   .contact a:hover{border-color:var(--phase)}
   .contact li span{display:block;font-size:.8rem;color:#AEBBC4;font-family:var(--body);font-weight:400}
   @media (max-width:760px){.contact .wrap{grid-template-columns:1fr}}
-
   footer{background:var(--ink);color:#7F8F9A;font-size:.85rem;border-top:1px solid #2B3A45}
   footer .wrap{padding-top:18px;padding-bottom:18px}
 </style>
@@ -222,263 +179,315 @@
   <div class="wrap">
     <a class="brand" href="#">Hércules Santos</a>
     <nav aria-label="Main">
-      <a href="#services">Services</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience</a>
-      <a class="cta" href="#contact">Contact</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#software" data-i18n="nav.software">Software</a>
+      <a href="#experience" data-i18n="nav.experience">Experience</a>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+      </div>
+      <a class="cta" href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
   </div>
 </header>
 
 <main>
-  <!-- HERO -->
   <section class="hero">
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <h1>Electrical design for buildings, from the service entrance to the last outlet.</h1>
-          <p class="lede">I'm a licensed electrical engineer in Brazil. I design and draft low-voltage systems for residential and mixed-use buildings, and I deliver clean, standardized CAD drawings ready for the job site.</p>
+          <h1 data-i18n="hero.title">Electrical design for buildings, from the service entrance to the last outlet.</h1>
+          <p class="lede" data-i18n="hero.lede">I'm a licensed electrical engineer in Brazil. I design and draft low-voltage systems for residential and mixed-use buildings, and I deliver clean, standardized drawing sets ready for the job site and the utility.</p>
           <div class="actions">
-            <a class="btn primary" href="#contact">Request a quote</a>
-            <a class="btn ghost" href="#projects">See projects</a>
+            <a class="btn primary" href="#contact" data-i18n="hero.quote">Request a quote</a>
+            <a class="btn ghost" href="#projects" data-i18n="hero.see">See projects</a>
           </div>
         </div>
         <figure class="callout">
           <div class="ring">
-            <img src="WhatsApp%20Image%202025-09-25%20at%2015.53.07%20(2).jpeg" alt="Hércules Santos, electrical engineer">
+            <img src="WhatsApp%20Image%202025-09-25%20at%2015.53.07%20(2).jpeg" alt="Hércules Santos">
           </div>
-          <figcaption class="tag"><b>A</b>Engineer</figcaption>
+          <figcaption class="tag"><b>A</b><span data-i18n="hero.tag">Engineer</span></figcaption>
         </figure>
       </div>
 
-      <dl class="titleblock" aria-label="Summary">
-        <div><dt>Engineer</dt><dd>Hércules Santos da Silva Lima</dd></div>
-        <div><dt>License</dt><dd>CREA-BA 052355761-2</dd></div>
-        <div><dt>Based in</dt><dd>Feira de Santana, Brazil (UTC−3)</dd></div>
-        <div><dt>Delivers</dt><dd>DWG, DXF and PDF drawings</dd></div>
-        <div><dt>Sheet</dt><dd>1 of 1</dd></div>
+      <dl class="titleblock">
+        <div><dt data-i18n="tb.engineer">Engineer</dt><dd>Hércules Santos da Silva Lima</dd></div>
+        <div><dt data-i18n="tb.license">License</dt><dd>CREA-BA 052355761-2</dd></div>
+        <div><dt data-i18n="tb.based">Based in</dt><dd data-i18n="tb.basedv">Feira de Santana, Brazil (UTC−3)</dd></div>
+        <div><dt data-i18n="tb.delivers">Delivers</dt><dd data-i18n="tb.deliversv">DWG, DXF and PDF drawings</dd></div>
+        <div><dt data-i18n="tb.sheet">Sheet</dt><dd data-i18n="tb.sheetv">1 of 1</dd></div>
       </dl>
     </div>
   </section>
 
-  <!-- SERVICES -->
   <section class="block" id="services">
     <div class="wrap">
-      <h2>Services <small>What I can draw for you</small></h2>
+      <h2><span data-i18n="sv.title">Services</span> <small data-i18n="sv.sub">What I can draw for you</small></h2>
       <table class="legend">
-        <thead><tr><th>Symbol</th><th>Service</th><th>What you get</th></tr></thead>
+        <thead><tr><th data-i18n="sv.th1">Symbol</th><th data-i18n="sv.th2">Service</th><th data-i18n="sv.th3">What you get</th></tr></thead>
         <tbody>
           <tr>
             <td class="sym"><svg viewBox="0 0 44 44" aria-hidden="true"><circle cx="22" cy="22" r="12"/><line x1="17" y1="18" x2="17" y2="26"/><line x1="27" y1="18" x2="27" y2="26"/></svg></td>
-            <td class="name">Lighting and power plans</td>
-            <td class="what">Outlets, lighting points, circuits and conduit runs laid out on your floor plans, with circuit numbering and a symbol legend.</td>
+            <td class="name" data-i18n="sv.1n">Lighting and power plans</td>
+            <td class="what" data-i18n="sv.1d">Outlets, lighting points, circuits and conduit runs laid out on your floor plans, with circuit numbering and a symbol legend.</td>
           </tr>
           <tr>
             <td class="sym"><svg viewBox="0 0 44 44" aria-hidden="true"><line x1="22" y1="4" x2="22" y2="16"/><rect x="16" y="16" width="12" height="10"/><line x1="22" y1="26" x2="22" y2="40"/><polyline points="17,35 22,40 27,35"/></svg></td>
-            <td class="name">Single-line diagrams</td>
-            <td class="what">Service entrance, metering center, main and sub-panels, with breaker and cable sizing shown on the diagram.</td>
+            <td class="name" data-i18n="sv.2n">Single-line diagrams</td>
+            <td class="what" data-i18n="sv.2d">Service entrance, metering center, main and sub-panels, with breaker and cable sizing shown on the diagram.</td>
           </tr>
           <tr>
             <td class="sym"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="8" y="6" width="28" height="32"/><line x1="8" y1="14" x2="36" y2="14"/><line x1="8" y1="22" x2="36" y2="22"/><line x1="8" y1="30" x2="36" y2="30"/><line x1="20" y1="6" x2="20" y2="38"/></svg></td>
-            <td class="name">Load schedules and panel layouts</td>
-            <td class="what">Installed load, demand calculation, phase balancing and panel schedules in a spreadsheet with open formulas.</td>
+            <td class="name" data-i18n="sv.3n">Load schedules and panel layouts</td>
+            <td class="what" data-i18n="sv.3d">Installed load, demand calculation, phase balancing and panel schedules in a spreadsheet with open formulas.</td>
           </tr>
           <tr>
             <td class="sym"><svg viewBox="0 0 44 44" aria-hidden="true"><line x1="22" y1="4" x2="22" y2="22"/><line x1="10" y1="22" x2="34" y2="22"/><line x1="14" y1="28" x2="30" y2="28"/><line x1="18" y1="34" x2="26" y2="34"/></svg></td>
-            <td class="name">Grounding and construction details</td>
-            <td class="what">Grounding layout, cable sizing and the construction details an electrician needs to build it right on site.</td>
+            <td class="name" data-i18n="sv.4n">Grounding, lightning protection and details</td>
+            <td class="what" data-i18n="sv.4d">Grounding layout, lightning protection, cable sizing and the construction details an electrician needs to build it right on site.</td>
           </tr>
           <tr>
             <td class="sym"><svg viewBox="0 0 44 44" aria-hidden="true"><rect x="4" y="10" width="14" height="18"/><rect x="26" y="16" width="14" height="18"/><line x1="18" y1="19" x2="26" y2="19"/><polyline points="22,15 26,19 22,23"/></svg></td>
-            <td class="name">PDF and paper to CAD</td>
-            <td class="what">Redrafting of PDFs, scans and hand sketches into clean, layered DWG or DXF files.</td>
+            <td class="name" data-i18n="sv.5n">PDF and paper to CAD</td>
+            <td class="what" data-i18n="sv.5d">Redrafting of PDFs, scans and hand sketches into clean, layered DWG or DXF files.</td>
           </tr>
           <tr>
             <td class="sym"><svg viewBox="0 0 44 44" aria-hidden="true"><polygon points="22,6 38,14 22,22 6,14"/><polyline points="6,22 22,30 38,22"/><polyline points="6,30 22,38 38,30"/></svg></td>
-            <td class="name">Drawing standardization</td>
-            <td class="what">Layers, blocks, text styles and title blocks unified across a whole drawing set, done by script so nothing gets missed.</td>
+            <td class="name" data-i18n="sv.6n">Drawing standardization</td>
+            <td class="what" data-i18n="sv.6d">Layers, blocks, text styles and title blocks unified across a whole drawing set, done by script so nothing gets missed.</td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <!-- PROJECTS -->
   <section class="block" id="projects">
     <div class="wrap">
-      <h2>Projects <small>Recent building work in Bahia, Brazil</small></h2>
-      <p class="intro">Client names and addresses are omitted. Drawings are shown with personal data removed.</p>
+      <h2><span data-i18n="pj.title">Projects</span> <small data-i18n="pj.sub">Recent building work in Bahia, Brazil</small></h2>
+      <p class="intro" data-i18n="pj.intro">Client names and addresses were removed from the sheets. Pick a sheet below each preview, or open it at full size.</p>
 
       <article class="project">
-        <div class="sheet">
-          <!-- Upload a drawing preview named project-residential.png to the repository root -->
-          <img src="project-residential.png" alt="Electrical plan of an 8-unit residential building" onerror="this.parentNode.classList.add('empty')">
-          <div class="placeholder"><svg viewBox="0 0 200 140" aria-hidden="true"><rect x="10" y="10" width="180" height="120"/><line x1="100" y1="10" x2="100" y2="130"/><line x1="10" y1="70" x2="190" y2="70"/><circle cx="55" cy="40" r="6"/><circle cx="145" cy="40" r="6"/><circle cx="55" cy="100" r="6"/><circle cx="145" cy="100" r="6"/></svg></div>
+        <div class="gallery">
+          <a class="main" href="project-mixed-1.jpg" target="_blank" rel="noopener"><img src="project-mixed-1.jpg" alt="Typical floor electrical plan, 17-unit mixed-use building" loading="lazy"></a>
+          <div class="thumbs">
+            <button type="button" data-src="project-mixed-1.jpg" aria-current="true" data-i18n="g.typ">Typical floor plan</button>
+            <button type="button" data-src="project-mixed-2.jpg" data-i18n="g.apt">Apartment layout</button>
+            <button type="button" data-src="project-mixed-3.jpg" data-i18n="g.sld">Single-line diagram</button>
+            <button type="button" data-src="project-mixed-4.jpg" data-i18n="g.spda">Lightning protection</button>
+            <button type="button" data-src="project-mixed-5.jpg" data-i18n="g.det">Construction details</button>
+          </div>
+          <a class="open" href="project-mixed-1.jpg" target="_blank" rel="noopener" data-i18n="g.open">Open full sheet</a>
         </div>
         <div>
-          <h3>8-unit residential building</h3>
-          <p class="where">Ipirá, Bahia, 2026</p>
-          <p>Complete electrical design for a two-story apartment building with eight units and a common-area meter, prepared for utility submission.</p>
+          <h3 data-i18n="p1.t">17-unit mixed-use building</h3>
+          <p class="where" data-i18n="p1.w">Ipirá, Bahia, 2026</p>
+          <p data-i18n="p1.d">Fifteen apartments, a store and a common-area meter. Full-scope low-voltage design with construction-level detailing, so the electrician can build straight from the drawings.</p>
           <dl class="figures">
-            <div><dt>Installed load</dt><dd>126.45 kW</dd></div>
-            <div><dt>Demand</dt><dd>79.27 kVA</dd></div>
-            <div><dt>Meters</dt><dd>9</dd></div>
+            <div><dt data-i18n="f.units">Consumer units</dt><dd>17</dd></div>
+            <div><dt data-i18n="f.load">Installed load</dt><dd data-i18n="n.a">315.06 kW</dd></div>
+            <div><dt data-i18n="f.demand">Demand</dt><dd data-i18n="n.b">62.65 kVA</dd></div>
           </dl>
           <ul class="scope">
-            <li>Six A1 sheets: floor plans at 1:50 with 1:25 enlargements</li>
-            <li>General single-line, metering center, grounding and site plan</li>
-            <li>Single-line diagrams for all nine panels</li>
-            <li>Load, demand and materials spreadsheet</li>
+            <li data-i18n="p1.s1">15 A1 sheets, including 3 execution sheets for the apartment types</li>
+            <li data-i18n="p1.s2">Collective service entrance, metering center and riser</li>
+            <li data-i18n="p1.s3">Lightning protection, grounding and equipotential bonding</li>
+            <li data-i18n="p1.s4">Technical report, materials list and an execution guide for the electrician</li>
           </ul>
         </div>
       </article>
 
       <article class="project">
-        <div class="sheet">
-          <!-- Upload a drawing preview named project-substation.png to the repository root -->
-          <img src="project-substation.png" alt="Single-line diagram of a mixed-use building with a 300 kVA substation" onerror="this.parentNode.classList.add('empty')">
-          <div class="placeholder"><svg viewBox="0 0 200 140" aria-hidden="true"><line x1="100" y1="10" x2="100" y2="50"/><circle cx="100" cy="60" r="10"/><circle cx="100" cy="74" r="10"/><line x1="100" y1="84" x2="100" y2="104"/><line x1="40" y1="104" x2="160" y2="104"/><line x1="40" y1="104" x2="40" y2="128"/><line x1="80" y1="104" x2="80" y2="128"/><line x1="120" y1="104" x2="120" y2="128"/><line x1="160" y1="104" x2="160" y2="128"/></svg></div>
+        <div class="gallery">
+          <a class="main" href="project-residential-1.jpg" target="_blank" rel="noopener"><img src="project-residential-1.jpg" alt="Ground floor electrical plan, 8-unit residential building" loading="lazy"></a>
+          <div class="thumbs">
+            <button type="button" data-src="project-residential-1.jpg" aria-current="true" data-i18n="g.plan">Floor plan</button>
+            <button type="button" data-src="project-residential-2.jpg" data-i18n="g.sld">Single-line diagram</button>
+            <button type="button" data-src="project-residential-3.jpg" data-i18n="g.meter">Metering center</button>
+            <button type="button" data-src="project-residential-4.jpg" data-i18n="g.det">Construction details</button>
+          </div>
+          <a class="open" href="project-residential-1.jpg" target="_blank" rel="noopener" data-i18n="g.open">Open full sheet</a>
         </div>
         <div>
-          <h3>Mixed-use building with substation</h3>
-          <p class="where">Ipirá, Bahia, 2026</p>
-          <p>Residential floors over a ground-floor store, supplied at medium voltage through a dedicated transformer.</p>
+          <h3 data-i18n="p2.t">8-unit residential building</h3>
+          <p class="where" data-i18n="p2.w">Ipirá, Bahia, 2026</p>
+          <p data-i18n="p2.d">Complete electrical design for a two-story apartment building with eight units and a common-area meter, prepared for utility submission.</p>
           <dl class="figures">
-            <div><dt>Demand</dt><dd>261.5 kVA</dd></div>
-            <div><dt>Transformer</dt><dd>300 kVA</dd></div>
-            <div><dt>Supply</dt><dd>13.8 kV</dd></div>
+            <div><dt data-i18n="f.load">Installed load</dt><dd data-i18n="n.c">126.45 kW</dd></div>
+            <div><dt data-i18n="f.demand">Demand</dt><dd data-i18n="n.d">79.27 kVA</dd></div>
+            <div><dt data-i18n="f.meters">Meters</dt><dd>9</dd></div>
           </dl>
           <ul class="scope">
-            <li>Single-line diagram, metering center and substation drawings</li>
-            <li>Lightning protection system layout</li>
-            <li>Load schedules, materials list and technical report</li>
+            <li data-i18n="p2.s1">9 A1 sheets: floor plans at 1:50, site plan and riser</li>
+            <li data-i18n="p2.s2">General single-line, metering center and grounding</li>
+            <li data-i18n="p2.s3">Single-line diagrams for all nine panels</li>
+            <li data-i18n="p2.s4">Load, demand and materials spreadsheet with open formulas</li>
           </ul>
         </div>
       </article>
 
-      <article class="project">
-        <div class="sheet">
-          <!-- Upload a drawing preview named project-mixed-use.png to the repository root -->
-          <img src="project-mixed-use.png" alt="Electrical riser drawing of a 17-unit mixed-use building" onerror="this.parentNode.classList.add('empty')">
-          <div class="placeholder"><svg viewBox="0 0 200 140" aria-hidden="true"><rect x="70" y="10" width="60" height="120"/><line x1="70" y1="34" x2="130" y2="34"/><line x1="70" y1="58" x2="130" y2="58"/><line x1="70" y1="82" x2="130" y2="82"/><line x1="70" y1="106" x2="130" y2="106"/><line x1="100" y1="10" x2="100" y2="130"/></svg></div>
-        </div>
+      <article class="project textonly">
         <div>
-          <h3>17-unit mixed-use building</h3>
-          <p class="where">Ipirá, Bahia, 2026</p>
-          <p>Full-scope low-voltage design with construction-level detailing, so the electrician on site can build directly from the drawings.</p>
+          <h3 data-i18n="p3.t">Mixed-use building with substation</h3>
+          <p class="where" data-i18n="p3.w">Ipirá, Bahia, 2026</p>
+          <p data-i18n="p3.d">Residential floors over a ground-floor store, supplied at medium voltage through a dedicated transformer. Single-line diagram, metering center, substation and lightning protection drawings, plus load schedules and materials list.</p>
           <dl class="figures">
-            <div><dt>Consumer units</dt><dd>17</dd></div>
-            <div><dt>Scope</dt><dd>Full</dd></div>
-            <div><dt>Voltage</dt><dd>Low</dd></div>
+            <div><dt data-i18n="f.demand">Demand</dt><dd data-i18n="n.e">261.5 kVA</dd></div>
+            <div><dt data-i18n="f.trafo">Transformer</dt><dd>300 kVA</dd></div>
+            <div><dt data-i18n="f.supply">Supply</dt><dd data-i18n="n.f">13.8 kV</dd></div>
           </dl>
-          <ul class="scope">
-            <li>Collective service entrance and metering center</li>
-            <li>Riser and internal installations of every unit</li>
-            <li>Execution details for the job site</li>
-          </ul>
         </div>
       </article>
     </div>
   </section>
 
-  <!-- EXPERIENCE -->
+  <section class="block" id="software">
+    <div class="wrap">
+      <h2><span data-i18n="sw.title">Software I've built</span> <small data-i18n="sw.sub">Engineering meets code</small></h2>
+      <div class="apps">
+        <article>
+          <h3>GoBíblia</h3>
+          <span class="kind" data-i18n="sw.1k">Android app, live on Google Play</span>
+          <p data-i18n="sw.1d">A gamified Bible learning app with quizzes, learning trails, an in-app economy, text-to-speech, daily verses and a Bible reader with verse sharing.</p>
+          <p class="stack"><strong data-i18n="sw.built">Built with</strong> Flutter, Firebase, Google Play Billing</p>
+          <a class="btn ghost" href="https://play.google.com/store/apps/details?id=com.gobiblia.app" target="_blank" rel="noopener" data-i18n="sw.1a">View on Google Play</a>
+        </article>
+        <article>
+          <h3 data-i18n="sw.2t">Frequency inverter simulator</h3>
+          <span class="kind" data-i18n="sw.2k">Desktop training software</span>
+          <p data-i18n="sw.2d">A faithful simulator of an industrial frequency inverter, with parameters, fault codes and motor behavior, used in hands-on technical classes.</p>
+          <p class="stack"><strong data-i18n="sw.built">Built with</strong> Python, PyQt5</p>
+        </article>
+      </div>
+      <p class="tools" data-i18n="sw.note">I also use Python to generate and standardize DXF drawings, which keeps large drawing sets consistent and fast to revise.</p>
+    </div>
+  </section>
+
   <section class="block" id="experience">
     <div class="wrap">
-      <h2>Experience</h2>
+      <h2 data-i18n="ex.title">Experience</h2>
       <ol class="timeline">
-        <li>
-          <span class="when">May 2026 to now</span>
-          <div>
-            <h3>Electrical Design Engineer</h3>
-            <span class="org">Freelance</span>
-            <p>Low-voltage and medium-voltage entrance projects for residential and mixed-use buildings, from load calculation to the final drawing set.</p>
-          </div>
-        </li>
-        <li>
-          <span class="when">Ongoing</span>
-          <div>
-            <h3>Technical Instructor</h3>
-            <span class="org">SENAI Bahia</span>
-            <p>Teaching electromechanics courses: electrical installations, industrial drives and frequency inverters. Built a frequency inverter simulator in Python for hands-on classes.</p>
-          </div>
-        </li>
-        <li>
-          <span class="when">Apr 2025 to May 2026</span>
-          <div>
-            <h3>Data Processing Supervisor</h3>
-            <span class="org">Glux Solutions</span>
-            <p>Led the geospatial re-registration of municipal public lighting assets under Brazilian regulator rules (ANEEL REN 1000/2021), using ArcGIS and Excel.</p>
-          </div>
-        </li>
-        <li>
-          <span class="when">Feb 2022 to Apr 2025</span>
-          <div>
-            <h3>Data Processing Supervisor, previously Georeferenced Data Coder</h3>
-            <span class="org">Grupo JVM</span>
-            <p>Coded, validated and later supervised the processing of georeferenced public lighting data.</p>
-          </div>
-        </li>
-        <li>
-          <span class="when">Jan 2018 to Nov 2021</span>
-          <div>
-            <h3>Electromechanical Technician, then Production Assistant</h3>
-            <span class="org">Labovet</span>
-            <p>Electromechanical maintenance support in an industrial plant, followed by production operations with hands-on maintenance.</p>
-          </div>
-        </li>
-        <li>
-          <span class="when">Jun 2017 to Dec 2017</span>
-          <div>
-            <h3>Electromechanical Technician</h3>
-            <span class="org">Belgo Arames (ArcelorMittal group)</span>
-            <p>Production line processes, maintenance and industrial quality standards in a large steel wire plant.</p>
-          </div>
-        </li>
+        <li><span class="when" data-i18n="ex.1w">May 2026 to now</span><div><h3 data-i18n="ex.1t">Electrical Design Engineer</h3><span class="org" data-i18n="ex.1o">Freelance</span><p data-i18n="ex.1d">Electrical projects for residential and mixed-use buildings, from load calculation to the final drawing set and utility submission.</p></div></li>
+        <li><span class="when" data-i18n="ex.2w">Ongoing</span><div><h3 data-i18n="ex.2t">Technical Instructor</h3><span class="org">SENAI Bahia</span><p data-i18n="ex.2d">Teaching electromechanics courses: electrical installations, industrial drives and frequency inverters.</p></div></li>
+        <li><span class="when" data-i18n="ex.3w">Apr 2025 to May 2026</span><div><h3 data-i18n="ex.3t">Data Processing Supervisor</h3><span class="org">Glux Solutions</span><p data-i18n="ex.3d">Led the geospatial re-registration of municipal public lighting assets under ANEEL REN 1000/2021, using ArcGIS and Excel.</p></div></li>
+        <li><span class="when" data-i18n="ex.4w">Feb 2022 to Apr 2025</span><div><h3 data-i18n="ex.4t">Data Processing Supervisor, previously Georeferenced Data Coder</h3><span class="org">Grupo JVM</span><p data-i18n="ex.4d">Coded, validated and later supervised the processing of georeferenced public lighting data.</p></div></li>
+        <li><span class="when" data-i18n="ex.5w">Jan 2018 to Nov 2021</span><div><h3 data-i18n="ex.5t">Electromechanical Technician, then Production Assistant</h3><span class="org">Labovet</span><p data-i18n="ex.5d">Electromechanical maintenance support in an industrial plant, followed by production operations with hands-on maintenance.</p></div></li>
+        <li><span class="when" data-i18n="ex.6w">Jun 2017 to Dec 2017</span><div><h3 data-i18n="ex.6t">Electromechanical Technician</h3><span class="org" data-i18n="ex.6o">Belgo Arames (ArcelorMittal group)</span><p data-i18n="ex.6d">Production line processes, maintenance and industrial quality standards in a large steel wire plant.</p></div></li>
       </ol>
     </div>
   </section>
 
-  <!-- CREDENTIALS -->
   <section class="block" id="credentials">
     <div class="wrap">
-      <h2>License and education</h2>
+      <h2 data-i18n="cr.title">License and education</h2>
       <div class="creds">
-        <div>
-          <h3>Professional engineer license</h3>
-          <p>CREA-BA, Regional Council of Engineering of Bahia. Registration 052355761-2.</p>
-        </div>
-        <div>
-          <h3>BSc in Electrical Engineering</h3>
-          <p>UNEF, Feira de Santana. 2019 to 2025.</p>
-        </div>
-        <div>
-          <h3>Technical degree in Electromechanics</h3>
-          <p>SENAI Bahia. 2016 to 2017.</p>
-        </div>
+        <div><h3 data-i18n="cr.1t">Professional engineer license</h3><p data-i18n="cr.1d">CREA-BA, Regional Council of Engineering of Bahia. Registration 052355761-2.</p></div>
+        <div><h3 data-i18n="cr.2t">BSc in Electrical Engineering</h3><p data-i18n="cr.2d">UNEF, Feira de Santana. 2019 to 2025.</p></div>
+        <div><h3 data-i18n="cr.3t">Technical degree in Electromechanics</h3><p data-i18n="cr.3d">SENAI Bahia. 2016 to 2017.</p></div>
       </div>
-      <p class="tools"><strong>Tools:</strong> AutoCAD, Python for DXF automation, Microsoft Excel, ArcGIS and QGIS. Portuguese is my native language; I work in English by email.</p>
+      <p class="tools" data-i18n="cr.tools">Tools: AutoCAD, Python for DXF automation, Excel, ArcGIS and QGIS. Portuguese is my native language; I work in English by email.</p>
     </div>
   </section>
 </main>
 
-<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="wrap">
     <div>
-      <h2>Send me your floor plans.</h2>
-      <p>Tell me the building type, number of units and what drawings you need. I reply by email with a scope and a price.</p>
+      <h2 data-i18n="ct.title">Send me your floor plans.</h2>
+      <p data-i18n="ct.d">Tell me the building type, number of units and what drawings you need. I reply with a scope and a price.</p>
     </div>
     <ul>
       <li><a href="mailto:herculessantos.comercial@gmail.com"><span>Email</span>herculessantos.comercial@gmail.com</a></li>
-      <li><a href="https://www.cadcrowd.com/profile/273073-hrculess" target="_blank" rel="noopener"><span>Hire me on</span>Cad Crowd</a></li>
+      <li><a href="https://www.cadcrowd.com/profile/273073-hrculess" target="_blank" rel="noopener"><span data-i18n="ct.hire">Hire me on</span>Cad Crowd</a></li>
       <li><a href="https://wa.me/5575991019893" target="_blank" rel="noopener"><span>WhatsApp</span>+55 75 99101-9893</a></li>
     </ul>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">© 2026 Hércules Santos da Silva Lima. Electrical engineer, CREA-BA.</div>
+  <div class="wrap" data-i18n="ft">© 2026 Hércules Santos da Silva Lima. Electrical engineer, CREA-BA.</div>
 </footer>
 
+<script>
+  /* Portuguese translations. English is the text written in the HTML. */
+  const PT = {
+    "n.a":"315,06 kW","n.b":"62,65 kVA","n.c":"126,45 kW","n.d":"79,27 kVA","n.e":"261,5 kVA","n.f":"13,8 kV",
+    "nav.services":"Serviços","nav.projects":"Projetos","nav.software":"Software","nav.experience":"Experiência","nav.contact":"Contato",
+    "hero.title":"Projeto elétrico para edificações, da entrada de energia à última tomada.",
+    "hero.lede":"Sou engenheiro eletricista registrado no CREA-BA. Projeto e desenho instalações de baixa tensão para edificações residenciais e de uso misto, com pranchas limpas e padronizadas, prontas para a obra e para a concessionária.",
+    "hero.quote":"Pedir orçamento","hero.see":"Ver projetos","hero.tag":"Engenheiro",
+    "tb.engineer":"Engenheiro","tb.license":"Registro","tb.based":"Base","tb.basedv":"Feira de Santana, BA (UTC−3)",
+    "tb.delivers":"Entrega","tb.deliversv":"Pranchas em DWG, DXF e PDF","tb.sheet":"Prancha","tb.sheetv":"1 de 1",
+    "sv.title":"Serviços","sv.sub":"O que posso desenhar para você","sv.th1":"Símbolo","sv.th2":"Serviço","sv.th3":"O que você recebe",
+    "sv.1n":"Plantas de iluminação e tomadas","sv.1d":"Tomadas, pontos de luz, circuitos e eletrodutos lançados sobre a sua planta, com numeração de circuitos e legenda de símbolos.",
+    "sv.2n":"Diagramas unifilares","sv.2d":"Entrada de energia, centro de medição, quadro geral e quadros de distribuição, com disjuntores e cabos dimensionados no próprio diagrama.",
+    "sv.3n":"Quadros de cargas e demanda","sv.3d":"Carga instalada, cálculo de demanda, balanceamento de fases e quadros de cargas em planilha com fórmulas abertas.",
+    "sv.4n":"Aterramento, SPDA e detalhes","sv.4d":"Aterramento, SPDA, dimensionamento de cabos e os detalhes construtivos que o eletricista precisa para executar certo na obra.",
+    "sv.5n":"De PDF e papel para CAD","sv.5d":"Redesenho de PDFs, digitalizações e croquis à mão em arquivos DWG ou DXF limpos e organizados em layers.",
+    "sv.6n":"Padronização de pranchas","sv.6d":"Layers, blocos, estilos de texto e carimbos unificados em todo o conjunto de pranchas, feito por script para nada escapar.",
+    "pj.title":"Projetos","pj.sub":"Obras recentes na Bahia",
+    "pj.intro":"Nome do cliente e endereço foram removidos das pranchas. Escolha uma prancha abaixo de cada imagem ou abra em tamanho real.",
+    "g.typ":"Pavimento tipo","g.apt":"Apartamento","g.sld":"Unifilar","g.spda":"SPDA","g.det":"Detalhes construtivos","g.plan":"Planta baixa","g.meter":"Centro de medição","g.open":"Abrir prancha inteira",
+    "p1.t":"Edifício de uso misto com 17 unidades","p1.w":"Ipirá, Bahia, 2026",
+    "p1.d":"Quinze apartamentos, uma loja e o condomínio. Projeto de baixa tensão completo, com detalhamento executivo para o eletricista construir direto pelas pranchas.",
+    "f.units":"Unidades consumidoras","f.load":"Carga instalada","f.demand":"Demanda","f.meters":"Medições","f.trafo":"Transformador","f.supply":"Tensão de fornecimento",
+    "p1.s1":"15 pranchas A1, incluindo 3 executivos dos tipos de apartamento","p1.s2":"Entrada coletiva, centro de medição e prumada","p1.s3":"SPDA, aterramento e equipotencialização","p1.s4":"Memorial descritivo, lista de materiais e caderno de execução do eletricista",
+    "p2.t":"Edifício residencial com 8 unidades","p2.w":"Ipirá, Bahia, 2026",
+    "p2.d":"Projeto elétrico completo de um prédio de dois pavimentos com oito apartamentos e medição do condomínio, pronto para a concessionária.",
+    "p2.s1":"9 pranchas A1: plantas em 1:50, situação e prumada","p2.s2":"Unifilar geral, centro de medição e aterramento","p2.s3":"Unifilares dos nove quadros de distribuição","p2.s4":"Planilha de cargas, demanda e materiais com fórmulas abertas",
+    "p3.t":"Edifício de uso misto com subestação","p3.w":"Ipirá, Bahia, 2026",
+    "p3.d":"Pavimentos residenciais sobre loja no térreo, atendidos em média tensão por transformador próprio. Unifilar, centro de medição, subestação e SPDA, com quadros de cargas e lista de materiais.",
+    "sw.title":"Softwares que desenvolvi","sw.sub":"Engenharia com código",
+    "sw.1k":"App Android publicado no Google Play","sw.1d":"App de estudo bíblico gamificado, com quizzes, trilhas de aprendizado, economia no app, leitura em voz alta, versículo do dia e leitor da Bíblia com compartilhamento de versículos.",
+    "sw.built":"Feito com","sw.1a":"Ver no Google Play",
+    "sw.2t":"Simulador de inversor de frequência","sw.2k":"Software de treinamento para desktop","sw.2d":"Simulador fiel de um inversor de frequência industrial, com parâmetros, códigos de falha e comportamento do motor, usado em aulas práticas.",
+    "sw.note":"Também uso Python para gerar e padronizar pranchas em DXF, o que mantém grandes conjuntos de desenhos consistentes e rápidos de revisar.",
+    "ex.title":"Experiência",
+    "ex.1w":"Mai 2026 até hoje","ex.1t":"Engenheiro Eletricista Projetista","ex.1o":"Autônomo","ex.1d":"Projetos elétricos de edificações residenciais e de uso misto, do cálculo de cargas ao conjunto final de pranchas e à entrada na concessionária.",
+    "ex.2w":"Atual","ex.2t":"Instrutor Técnico","ex.2d":"Aulas no curso técnico de eletromecânica: instalações elétricas, acionamentos industriais e inversores de frequência.",
+    "ex.3w":"Abr 2025 a Mai 2026","ex.3t":"Supervisor de Processamento de Dados","ex.3d":"Liderança do recadastramento georreferenciado de ativos de iluminação pública conforme a REN 1000/2021 da ANEEL, com ArcGIS e Excel.",
+    "ex.4w":"Fev 2022 a Abr 2025","ex.4t":"Supervisor de Processamento de Dados, antes Codificador de Dados Georreferenciados","ex.4d":"Codificação, validação e depois supervisão do processamento de dados georreferenciados de iluminação pública.",
+    "ex.5w":"Jan 2018 a Nov 2021","ex.5t":"Técnico Eletromecânico, depois Auxiliar de Produção","ex.5d":"Suporte à manutenção eletromecânica em ambiente industrial e, depois, operação de produção com manutenção pontual.",
+    "ex.6w":"Jun 2017 a Dez 2017","ex.6t":"Técnico Eletromecânico","ex.6o":"Belgo Arames (grupo ArcelorMittal)","ex.6d":"Processos da linha de produção, manutenção e normas de qualidade industrial em uma grande fábrica de arames.",
+    "cr.title":"Registro e formação",
+    "cr.1t":"Registro profissional","cr.1d":"CREA-BA, Conselho Regional de Engenharia e Agronomia da Bahia. Registro 052355761-2.",
+    "cr.2t":"Bacharelado em Engenharia Elétrica","cr.2d":"UNEF, Feira de Santana. 2019 a 2025.",
+    "cr.3t":"Técnico em Eletromecânica","cr.3d":"SENAI Bahia. 2016 a 2017.",
+    "cr.tools":"Ferramentas: AutoCAD, Python para automação de DXF, Excel, ArcGIS e QGIS. Atendo em português e em inglês por e-mail.",
+    "ct.title":"Me envie suas plantas.","ct.d":"Diga o tipo de edificação, o número de unidades e quais pranchas você precisa. Respondo com escopo e preço.",
+    "ct.hire":"Me contrate na","ft":"© 2026 Hércules Santos da Silva Lima. Engenheiro eletricista, CREA-BA."
+  };
+  const nodes = document.querySelectorAll("[data-i18n]");
+  const EN = {};
+  nodes.forEach(n => { EN[n.dataset.i18n] = n.textContent; });
+
+  function setLang(lang){
+    const dict = lang === "pt" ? PT : EN;
+    nodes.forEach(n => { const v = dict[n.dataset.i18n]; if (v) n.textContent = v; });
+    document.documentElement.lang = lang === "pt" ? "pt-BR" : "en";
+    document.title = lang === "pt"
+      ? "Hércules Santos | Engenheiro Eletricista, Projetos Elétricos e Desenho CAD"
+      : "Hércules Santos | Electrical Engineer, Electrical Design and CAD Drafting";
+    document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+    try { localStorage.setItem("lang", lang); } catch(e) {}
+  }
+  document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+
+  let start = "en";
+  try { start = localStorage.getItem("lang") || ((navigator.language || "").toLowerCase().startsWith("pt") ? "pt" : "en"); } catch(e) {}
+  const q = new URLSearchParams(location.search).get("lang");
+  if (q === "pt" || q === "en") start = q;
+  if (start === "pt") setLang("pt");
+
+  /* Project galleries */
+  document.querySelectorAll(".gallery").forEach(g => {
+    const main = g.querySelector(".main"), img = main.querySelector("img"), open = g.querySelector(".open");
+    g.querySelectorAll(".thumbs button").forEach(b => b.addEventListener("click", () => {
+      img.src = b.dataset.src; main.href = b.dataset.src; open.href = b.dataset.src;
+      g.querySelectorAll(".thumbs button").forEach(x => x.setAttribute("aria-current", String(x === b)));
+    }));
+  });
+</script>
 </body>
 </html>
